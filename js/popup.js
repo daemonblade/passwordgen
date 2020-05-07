@@ -6,9 +6,11 @@
 
 function fullDomainFromUrl(url)
 {
+  console.log("url=" + url);
   var fullDomain = url.match(/^(?:\w+:\/\/)?((?:\w[-\w\d]*\.)*\w[-\w\d]*)(?:\/.*)?/)[1];
   if (!fullDomain)
     return null;
+  console.log ("full=" + fullDomain);
   return fullDomain;
 }
 
@@ -75,7 +77,7 @@ Popup.prototype.onActiveTabs_ = function(tabs) {
   var url = tab.url;
   if (!url)
     return;
-  this.tabDomain_ = fullDomainFromURL(url);
+  this.tabDomain_ = fullDomainFromUrl(url);
 
   domainSettings.get(this.tabDomain_, function(profileId, domain) {
     document.getElementById('domain').value = domain;
@@ -110,4 +112,5 @@ Popup.prototype.showOptions_ = function() {
 
 if (typeof exports !== 'undefined') {
   exports.domainFromURL = domainFromURL;
+  exports.fullDomainFromURL = fullDomainFromUrl;
 }

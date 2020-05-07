@@ -1,5 +1,5 @@
 {
-  "name": "Password Generator",
+  "name": "Password Generator Redux",
   "version": "0.0",
   "manifest_version": 2,
   "description": "Generate passwords for websites based on one master password and their domains.",
@@ -23,7 +23,7 @@
       "32": "icons/icon-32.png",
       "38": "icons/icon-38.png"
     },
-    "default_title": "Password Generator",
+    "default_title": "Password Generator Redux",
     "default_popup": "generate.html"
   },
   "options_page": "options.html",
