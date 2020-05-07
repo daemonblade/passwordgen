@@ -4,6 +4,14 @@
  * @file Here goes all the code, specific to Chrome Extension.
  */
 
+function fullDomainFromUrl(url)
+{
+  var fullDomain = url.match(/^(?:\w+:\/\/)?((?:\w[-\w\d]*\.)*\w[-\w\d]*)(?:\/.*)?/)[1];
+  if (!fullDomain)
+    return null;
+  return fullDomain;
+}
+
 function domainFromURL(url, opt_tld, opt_children_tld, opt_not_tld) {
   if (!opt_tld) {
     opt_tld = EFFECTIVE_TLD;
@@ -67,7 +75,7 @@ Popup.prototype.onActiveTabs_ = function(tabs) {
   var url = tab.url;
   if (!url)
     return;
-  this.tabDomain_ = domainFromURL(url);
+  this.tabDomain_ = fullDomainFromURL(url);
 
   domainSettings.get(this.tabDomain_, function(profileId, domain) {
     document.getElementById('domain').value = domain;
